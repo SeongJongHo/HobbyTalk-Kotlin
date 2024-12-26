@@ -4,7 +4,7 @@ import com.jongho.hobbytalk.api.mock.user.UserBeanKey
 import com.jongho.hobbytalk.api.mock.user.UserContainer
 import com.jongho.hobbytalk.api.mock.user.getUserContainer
 import com.jongho.hobbytalk.api.mock.user.repository.FakeUserRepositoryImpl
-import com.jongho.hobbytalk.api.user.command.application.dto.SignUpUser
+import com.jongho.hobbytalk.api.user.command.application.dto.request.SignUpUser
 import com.jongho.hobbytalk.api.user.command.application.usecase.SignUpUseCase
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested

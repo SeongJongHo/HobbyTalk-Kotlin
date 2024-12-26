@@ -31,4 +31,8 @@ class UserServiceImpl(private val userRepository: UserRepository): UserService{
 
         return userId
     }
+
+    override fun findOneByUsername(username: String): User? {
+        return userRepository.findOneByUsername(username = username)
+    }
 }
