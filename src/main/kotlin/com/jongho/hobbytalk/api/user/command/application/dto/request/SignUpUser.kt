@@ -1,4 +1,4 @@
-package com.jongho.hobbytalk.api.user.command.application.dto
+package com.jongho.hobbytalk.api.user.command.application.dto.request
 
 import com.jongho.hobbytalk.api.user.command.domain.model.User
 import java.time.LocalDateTime

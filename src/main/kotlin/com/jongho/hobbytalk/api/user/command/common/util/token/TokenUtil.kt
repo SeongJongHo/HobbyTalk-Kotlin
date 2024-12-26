@@ -17,4 +17,14 @@ enum class TokenType(private val value: Int) {
     fun getValue(): Int {
         return this.value
     }
+
+    companion object {
+        fun fromValue(value: Int): TokenType {
+            return when (value) {
+                1 -> ACCESS_TOKEN
+                2 -> REFRESH_TOKEN
+                else -> throw RuntimeException("Invalid TokenType value: $value")
+            }
+        }
+    }
 }

@@ -28,7 +28,7 @@ class FakeUserRepositoryImpl: UserRepository {
             userId = user.id
         }
         else {
-            userList.add(user.copy(id = id.getAndIncrement()))
+            userList.add(user.copy(id = id.incrementAndGet()))
 
             userId = id.get()
         }

@@ -1,6 +1,6 @@
 package com.jongho.hobbytalk.api.user.command.application.usecase
 
-import com.jongho.hobbytalk.api.user.command.application.dto.SignUpUser
+import com.jongho.hobbytalk.api.user.command.application.dto.request.SignUpUser
 import com.jongho.hobbytalk.api.user.command.application.service.UserService
 import com.jongho.hobbytalk.api.user.command.common.util.hash.PasswordHashUtil
 
