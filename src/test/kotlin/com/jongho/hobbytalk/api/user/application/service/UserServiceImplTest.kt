@@ -37,7 +37,7 @@ class UserServiceImplTest {
                 password = "1234",
                 nickname = "종호",
                 createdTime = LocalDateTime.now())
-            userContainer.get<FakeUserRepositoryImpl>(UserBeanKey.USER_REPOSITORY).clenUp()
+            userContainer.get<FakeUserRepositoryImpl>(UserBeanKey.USER_REPOSITORY).cleanUp()
         }
 
         @Test

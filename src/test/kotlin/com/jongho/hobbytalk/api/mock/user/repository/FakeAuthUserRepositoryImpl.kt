@@ -2,7 +2,6 @@ package com.jongho.hobbytalk.api.mock.user.repository
 
 import com.jongho.hobbytalk.api.user.command.application.repository.AuthUserRepository
 import com.jongho.hobbytalk.api.user.command.domain.model.AuthUser
-import java.util.concurrent.atomic.AtomicLong
 
 class FakeAuthUserRepositoryImpl: AuthUserRepository {
     private var authUserList: MutableList<AuthUser> = mutableListOf()
@@ -18,7 +17,11 @@ class FakeAuthUserRepositoryImpl: AuthUserRepository {
         }
     }
 
-    fun clenUp() {
+    override fun findOneByUserId(userId: Long): AuthUser? {
+        return authUserList.firstOrNull{authUser -> authUser.userId == userId }
+    }
+
+    fun cleanUp() {
         authUserList = mutableListOf()
     }
 }

@@ -29,7 +29,7 @@ class SignUpUseCaseImplTest {
         @BeforeEach
         fun cleanUp() {
 
-            userContainer.get<FakeUserRepositoryImpl>(UserBeanKey.USER_REPOSITORY).clenUp()
+            userContainer.get<FakeUserRepositoryImpl>(UserBeanKey.USER_REPOSITORY).cleanUp()
         }
 
         @Test

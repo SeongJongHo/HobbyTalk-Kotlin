@@ -52,8 +52,8 @@ class SignInUseCaseImplTest {
 
         @AfterEach
         fun cleanUp() {
-            userRepository.clenUp()
-            authUserRepository.clenUp()
+            userRepository.cleanUp()
+            authUserRepository.cleanUp()
         }
 
         @Test

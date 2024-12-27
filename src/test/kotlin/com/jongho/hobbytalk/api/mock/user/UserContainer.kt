@@ -5,9 +5,11 @@ import com.jongho.hobbytalk.api.mock.common.CommonContainer
 import com.jongho.hobbytalk.api.mock.common.getCommonContainer
 import com.jongho.hobbytalk.api.mock.user.repository.FakeAuthUserRepositoryImpl
 import com.jongho.hobbytalk.api.mock.user.repository.FakeUserRepositoryImpl
+import com.jongho.hobbytalk.api.user.command.application.service.AuthUserServiceImpl
 import com.jongho.hobbytalk.api.user.command.application.service.UserServiceImpl
 import com.jongho.hobbytalk.api.user.command.application.usecase.SignInUseCase
 import com.jongho.hobbytalk.api.user.command.application.usecase.SignUpUseCase
+import com.jongho.hobbytalk.api.user.command.application.usecase.TokenRefreshUseCase
 import com.jongho.hobbytalk.api.user.command.common.util.hash.PasswordHashUtil
 import com.jongho.hobbytalk.api.user.command.common.util.token.TokenUtil
 
@@ -23,11 +25,16 @@ class UserContainer (){
             userService = this.get(UserBeanKey.USER_SERVICE)
         )
         map[UserBeanKey.AUTH_USER_REPOSITORY.getValue()] = FakeAuthUserRepositoryImpl()
+        map[UserBeanKey.AUTH_USER_SERVICE.getValue()] = AuthUserServiceImpl(this.get(UserBeanKey.AUTH_USER_REPOSITORY))
         map[UserBeanKey.SIGN_IN_USE_CASE.getValue()] = SignInUseCase(
             tokenUtil = commonContainer.get<TokenUtil>(CommonBeanKey.TOKEN_UTIL),
             hashUtil = commonContainer.get<PasswordHashUtil>(CommonBeanKey.PASSWORD_HASH_UTIL),
             userService = this.get(UserBeanKey.USER_SERVICE),
             authUserRepository = this.get(UserBeanKey.AUTH_USER_REPOSITORY),
+        )
+        map[UserBeanKey.TOKEN_REFRESH_USE_CASE.getValue()] = TokenRefreshUseCase(
+            tokenUtil = commonContainer.get<TokenUtil>(CommonBeanKey.TOKEN_UTIL),
+            authUserService = this.get(UserBeanKey.AUTH_USER_SERVICE)
         )
     }
 
@@ -41,8 +48,10 @@ enum class UserBeanKey(private val value: String) {
     USER_REPOSITORY("UserRepository"),
     USER_SERVICE("UserService"),
     SIGN_UP_USE_CASE("SignUpUseCase"),
+    AUTH_USER_SERVICE("AuthUserService"),
     AUTH_USER_REPOSITORY("AuthUserRepository"),
-    SIGN_IN_USE_CASE("SignInUseCase");
+    SIGN_IN_USE_CASE("SignInUseCase"),
+    TOKEN_REFRESH_USE_CASE("TokenRefreshUseCase");
 
     fun getValue(): String {
         return value

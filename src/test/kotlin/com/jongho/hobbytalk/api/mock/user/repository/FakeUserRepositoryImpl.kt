@@ -36,7 +36,7 @@ class FakeUserRepositoryImpl: UserRepository {
         return userId
     }
 
-    fun clenUp() {
+    fun cleanUp() {
         userList = mutableListOf()
         id = AtomicLong(0)
     }
