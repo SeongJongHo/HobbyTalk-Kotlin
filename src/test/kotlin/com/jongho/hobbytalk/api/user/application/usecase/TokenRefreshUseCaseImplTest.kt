@@ -39,7 +39,7 @@ class TokenRefreshUseCaseImplTest {
 
         @AfterEach
         fun cleanUp() {
-            authUserRepository.clenUp()
+            authUserRepository.cleanUp()
         }
 
         @Test
