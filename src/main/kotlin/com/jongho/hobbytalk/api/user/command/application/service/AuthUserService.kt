@@ -1,8 +1,8 @@
-package com.jongho.hobbytalk.api.user.command.application.repository
+package com.jongho.hobbytalk.api.user.command.application.service
 
 import com.jongho.hobbytalk.api.user.command.domain.model.AuthUser
 
-interface AuthUserRepository {
+interface AuthUserService {
     fun save(authUser: AuthUser)
     fun findOneByUserId(userId: Long): AuthUser?
 }
