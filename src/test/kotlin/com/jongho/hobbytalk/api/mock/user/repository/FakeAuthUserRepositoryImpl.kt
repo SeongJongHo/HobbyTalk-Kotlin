@@ -21,7 +21,7 @@ class FakeAuthUserRepositoryImpl: AuthUserRepository {
         return authUserList.firstOrNull{authUser -> authUser.userId == userId }
     }
 
-    fun clenUp() {
+    fun cleanUp() {
         authUserList = mutableListOf()
     }
 }
