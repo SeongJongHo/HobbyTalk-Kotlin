@@ -45,7 +45,7 @@ class OpenChatRoomServiceImplTest {
 
         @Test
         @Description("생성갯수 제한인 5를 초과할 경우 MaxChatRoomsExceededException에 최대 개설 가능한 채팅방 개수를 초과하였습니다. 라는 메세지를 반환한다.")
-        fun 생성갯수_제한인_5를_초과할_경우_MaxChatRoomsExceededException_예외와_최대_개설_가능한_채팅방_개수를_초과하였습니다_라는_메세지를_반환한다(){
+        fun 생성갯수_제한인_5를_초과할_경우_예외와_최대_개설_가능한_채팅방_개수를_초과하였습니다_라는_메세지를_반환한다(){
             //given
             val expectedMessage = "최대 개설 가능한 채팅방 개수를 초과하였습니다."
             for(i in 0..4) {
