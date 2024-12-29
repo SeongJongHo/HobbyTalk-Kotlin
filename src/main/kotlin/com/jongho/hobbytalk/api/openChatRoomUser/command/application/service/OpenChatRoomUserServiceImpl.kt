@@ -4,7 +4,7 @@ import com.jongho.hobbytalk.api.openChatRoomUser.command.application.repository.
 import com.jongho.hobbytalk.api.openChatRoomUser.command.domain.model.OpenChatRoomUser
 
 class OpenChatRoomUserServiceImpl(private val openChatRoomUserRepository: OpenChatRoomUserRepository): OpenChatRoomUserService {
-    override fun save(openChatRoomUser: OpenChatRoomUser): Long {
+    override fun save(openChatRoomUser: OpenChatRoomUser){
         return openChatRoomUserRepository.save(openChatRoomUser = openChatRoomUser)
     }
 }

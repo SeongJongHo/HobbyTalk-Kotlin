@@ -27,7 +27,7 @@ class CreateOpenChatRoomUseCase(
     }
 
     private fun validateCategory(categoryId: Long) {
-        if (categoryService.findOneById(categoryId) == null) {
+        if (categoryService.findOneById(id = categoryId) == null) {
             throw NotFoundException("존재하지 않는 카테고리입니다.")
         }
     }
