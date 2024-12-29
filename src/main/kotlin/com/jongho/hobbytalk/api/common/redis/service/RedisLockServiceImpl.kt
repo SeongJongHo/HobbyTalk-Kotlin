@@ -1,25 +1,27 @@
 package com.jongho.hobbytalk.api.common.redis.service
 
 import com.jongho.hobbytalk.api.common.lock.repository.LockRepository
+import com.jongho.hobbytalk.api.common.lock.service.LockKey
+import com.jongho.hobbytalk.api.common.lock.service.LockService
 
-class RedisLockServiceImpl(private val lockRepository: LockRepository) {
-    fun acquireLock(id: Long, key: RedisKey): Boolean {
+class RedisLockServiceImpl(private val lockRepository: LockRepository): LockService {
+    override fun acquireLock(id: Long, key: LockKey): Boolean {
         return lockRepository.acquireLock(genKey(id, key))
     }
 
-    fun releaseLock(id: Long, key: RedisKey) {
+    override fun releaseLock(id: Long, key: LockKey) {
         lockRepository.releaseLock(genKey(id, key))
     }
 
-    private fun genKey(id: Long, key: RedisKey): String {
-        return key.getValue() + id
+    private fun genKey(id: Long, key: LockKey): String {
+        return key.getKey() + id
     }
 }
 
-enum class RedisKey(val value: String) {
+enum class RedisKey(private val key: String): LockKey {
     OPEN_CHAT_ROOM_LIMIT("openChatRoomLimit:userId:");
 
-    fun getValue(): String {
-        return this.value
+    override fun getKey(): String {
+        return this.key
     }
 }
