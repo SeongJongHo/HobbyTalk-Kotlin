@@ -10,10 +10,8 @@ import com.jongho.hobbytalk.api.user.command.application.service.UserServiceImpl
 import com.jongho.hobbytalk.api.user.command.application.usecase.SignInUseCase
 import com.jongho.hobbytalk.api.user.command.application.usecase.SignUpUseCase
 import com.jongho.hobbytalk.api.user.command.application.usecase.TokenRefreshUseCase
-import com.jongho.hobbytalk.api.user.command.common.util.hash.PasswordHashUtil
-import com.jongho.hobbytalk.api.user.command.common.util.token.TokenUtil
 
-class UserContainer (){
+object UserContainer {
     private val map: MutableMap<String, Any> = HashMap()
     private val commonContainer: CommonContainer = getCommonContainer()
 
@@ -21,19 +19,19 @@ class UserContainer (){
         map[UserBeanKey.USER_REPOSITORY.getValue()] = FakeUserRepositoryImpl()
         map[UserBeanKey.USER_SERVICE.getValue()] = UserServiceImpl(this.get(UserBeanKey.USER_REPOSITORY))
         map[UserBeanKey.SIGN_UP_USE_CASE.getValue()] = SignUpUseCase(
-            passwordHashUtil = commonContainer.get<PasswordHashUtil>(CommonBeanKey.PASSWORD_HASH_UTIL),
+            passwordHashUtil = commonContainer.get(CommonBeanKey.PASSWORD_HASH_UTIL),
             userService = this.get(UserBeanKey.USER_SERVICE)
         )
         map[UserBeanKey.AUTH_USER_REPOSITORY.getValue()] = FakeAuthUserRepositoryImpl()
         map[UserBeanKey.AUTH_USER_SERVICE.getValue()] = AuthUserServiceImpl(this.get(UserBeanKey.AUTH_USER_REPOSITORY))
         map[UserBeanKey.SIGN_IN_USE_CASE.getValue()] = SignInUseCase(
-            tokenUtil = commonContainer.get<TokenUtil>(CommonBeanKey.TOKEN_UTIL),
-            hashUtil = commonContainer.get<PasswordHashUtil>(CommonBeanKey.PASSWORD_HASH_UTIL),
+            tokenUtil = commonContainer.get(CommonBeanKey.TOKEN_UTIL),
+            hashUtil = commonContainer.get(CommonBeanKey.PASSWORD_HASH_UTIL),
             userService = this.get(UserBeanKey.USER_SERVICE),
             authUserRepository = this.get(UserBeanKey.AUTH_USER_REPOSITORY),
         )
         map[UserBeanKey.TOKEN_REFRESH_USE_CASE.getValue()] = TokenRefreshUseCase(
-            tokenUtil = commonContainer.get<TokenUtil>(CommonBeanKey.TOKEN_UTIL),
+            tokenUtil = commonContainer.get(CommonBeanKey.TOKEN_UTIL),
             authUserService = this.get(UserBeanKey.AUTH_USER_SERVICE)
         )
     }
@@ -59,5 +57,5 @@ enum class UserBeanKey(private val value: String) {
 }
 
 fun getUserContainer(): UserContainer {
-    return UserContainer()
+    return UserContainer
 }
