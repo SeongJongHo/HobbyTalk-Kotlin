@@ -2,7 +2,7 @@ package com.jongho.hobbytalk.api.user.command.application.usecase
 
 import com.jongho.hobbytalk.api.user.command.application.dto.response.TokenResponse
 import com.jongho.hobbytalk.api.user.command.application.service.AuthUserService
-import com.jongho.hobbytalk.api.user.command.common.exception.UnAuthorizedException
+import com.jongho.hobbytalk.api.common.exception.UnAuthorizedException
 import com.jongho.hobbytalk.api.user.command.common.exception.UserNotFoundException
 import com.jongho.hobbytalk.api.user.command.common.util.token.TokenUtil
 import org.springframework.transaction.annotation.Transactional

@@ -7,7 +7,7 @@ import com.jongho.hobbytalk.api.mock.user.getUserContainer
 import com.jongho.hobbytalk.api.mock.user.repository.FakeAuthUserRepositoryImpl
 import com.jongho.hobbytalk.api.user.command.application.dto.response.TokenResponse
 import com.jongho.hobbytalk.api.user.command.application.usecase.TokenRefreshUseCase
-import com.jongho.hobbytalk.api.user.command.common.exception.UnAuthorizedException
+import com.jongho.hobbytalk.api.common.exception.UnAuthorizedException
 import com.jongho.hobbytalk.api.user.command.common.exception.UserNotFoundException
 import com.jongho.hobbytalk.api.user.command.domain.model.AuthUser
 import org.junit.jupiter.api.*

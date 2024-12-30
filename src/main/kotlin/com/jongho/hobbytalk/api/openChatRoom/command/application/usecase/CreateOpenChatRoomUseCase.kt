@@ -35,14 +35,11 @@ class CreateOpenChatRoomUseCase(
     private fun createRoomWithLock(userId: Long, createOpenChatRoom: CreateOpenChatRoom): Long {
         val maxSpin = 10
         var spin = 0
-        var roomId = 0L
 
         while (spin < maxSpin) {
             if (lockService.acquireLock(userId, RedisKey.OPEN_CHAT_ROOM_LIMIT)) {
                 try {
-                    roomId = openChatRoomService.createOpenChatRoom(createOpenChatRoom.toModel(managerId = userId))
-
-                    return roomId
+                    return openChatRoomService.createOpenChatRoom(createOpenChatRoom.toModel(managerId = userId))
                 } finally {
                     lockService.releaseLock(userId, RedisKey.OPEN_CHAT_ROOM_LIMIT)
                 }

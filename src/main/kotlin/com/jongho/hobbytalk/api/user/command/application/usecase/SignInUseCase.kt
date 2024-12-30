@@ -4,7 +4,7 @@ import com.jongho.hobbytalk.api.user.command.application.dto.request.SignInUser
 import com.jongho.hobbytalk.api.user.command.application.dto.response.TokenResponse
 import com.jongho.hobbytalk.api.user.command.application.repository.AuthUserRepository
 import com.jongho.hobbytalk.api.user.command.application.service.UserService
-import com.jongho.hobbytalk.api.user.command.common.exception.UnAuthorizedException
+import com.jongho.hobbytalk.api.common.exception.UnAuthorizedException
 import com.jongho.hobbytalk.api.user.command.common.exception.UserNotFoundException
 import com.jongho.hobbytalk.api.user.command.common.util.hash.PasswordHashUtil
 import com.jongho.hobbytalk.api.user.command.common.util.token.TokenUtil

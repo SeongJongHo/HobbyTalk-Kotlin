@@ -17,6 +17,10 @@ class FakeOpenChatRoomRepositoryImpl: OpenChatRoomRepository {
             openChatRoom -> (openChatRoom.managerId == managerId && openChatRoom.title == title ) }
     }
 
+    override fun findOneById(id: Long): OpenChatRoom? {
+        return openChatRoomList.firstOrNull{ openChatRoom -> openChatRoom.id == id }
+    }
+
     override fun save(openChatRoom: OpenChatRoom): Long {
         val openChatRoomId: Long
         if(openChatRoom.id != 0L) {
