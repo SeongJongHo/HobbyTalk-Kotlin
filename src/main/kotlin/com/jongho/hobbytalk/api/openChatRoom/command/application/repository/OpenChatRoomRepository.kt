@@ -6,4 +6,5 @@ interface OpenChatRoomRepository {
     fun countByManagerId(managerId: Long): Int
     fun save(openChatRoom: OpenChatRoom): Long
     fun findOneByManagerIdAndTitle(managerId: Long, title: String): OpenChatRoom?
+    fun findOneById(id: Long): OpenChatRoom?
 }

@@ -1,6 +1,6 @@
 package com.jongho.hobbytalk.api.user.command.common.util.token
 
-import com.jongho.hobbytalk.api.user.command.common.exception.UnAuthorizedException
+import com.jongho.hobbytalk.api.common.exception.UnAuthorizedException
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.JwtException
