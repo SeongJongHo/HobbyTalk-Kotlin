@@ -6,7 +6,17 @@ class OpenChatRoomMembershipRequest (
     val openChatRoomId: Long,
     val message: String,
     val status: MembershipRequestStatus
-)
+) {
+    fun copy(
+        id: Long = this.id,
+        requesterId: Long = this.requesterId,
+        openChatRoomId: Long = this.openChatRoomId,
+        message: String = this.message,
+        status: MembershipRequestStatus = this.status
+    ): OpenChatRoomMembershipRequest {
+        return OpenChatRoomMembershipRequest(id, requesterId, openChatRoomId, message, status)
+    }
+}
 
 enum class MembershipRequestStatus(val value: Int) {
     PARTICIPATION_REQUEST(1),
