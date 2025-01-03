@@ -4,4 +4,5 @@ import com.jongho.hobbytalk.api.openChatRoomUser.command.domain.model.OpenChatRo
 
 interface OpenChatRoomUserRepository {
     fun save(openChatRoomUser: OpenChatRoomUser)
+    fun findOneByUserIdAndRoomId(userId: Long, roomId: Long): OpenChatRoomUser?
 }

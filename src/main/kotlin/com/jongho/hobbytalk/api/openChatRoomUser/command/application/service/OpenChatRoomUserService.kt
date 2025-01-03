@@ -4,4 +4,5 @@ import com.jongho.hobbytalk.api.openChatRoomUser.command.domain.model.OpenChatRo
 
 interface OpenChatRoomUserService {
     fun save(openChatRoomUser: OpenChatRoomUser)
+    fun exists(userId: Long, roomId: Long): Boolean
 }

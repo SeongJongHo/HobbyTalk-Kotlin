@@ -7,4 +7,8 @@ class OpenChatRoomUserServiceImpl(private val openChatRoomUserRepository: OpenCh
     override fun save(openChatRoomUser: OpenChatRoomUser){
         return openChatRoomUserRepository.save(openChatRoomUser = openChatRoomUser)
     }
+
+    override fun exists(userId: Long, roomId: Long): Boolean {
+        return openChatRoomUserRepository.findOneByUserIdAndRoomId(userId = userId, roomId = roomId) != null
+    }
 }
