@@ -2,6 +2,7 @@ package com.jongho.hobbytalk.api.openChatRoomMembershipRequest.command.applicati
 
 import com.jongho.hobbytalk.api.common.exception.AlreadyExistsException
 import com.jongho.hobbytalk.api.common.exception.ChatRoomLimitReachedException
+import com.jongho.hobbytalk.api.common.exception.NotFoundException
 import com.jongho.hobbytalk.api.openChatRoom.command.application.service.OpenChatRoomService
 import com.jongho.hobbytalk.api.openChatRoomMembershipRequest.command.application.service.OpenChatRoomMembershipRequestService
 import com.jongho.hobbytalk.api.openChatRoomMembershipRequest.command.domain.model.MembershipRequestStatus
@@ -14,9 +15,9 @@ class JoinRequestUseCase(
     private val openChatRoomService: OpenChatRoomService
 ) {
     fun execute(requesterId: Long, roomId: Long, message: String): Long {
-        val room = openChatRoomService.getOpenChatRoom(id = roomId) ?: throw RuntimeException("")
+        val room = openChatRoomService.getOpenChatRoom(id = roomId) ?: throw NotFoundException("존재하지 않는 채팅방입니다.: $roomId")
         if(room.currentAttendance >= room.maximumCapacity) {
-            throw ChatRoomLimitReachedException("이미 참여중인 채팅방입니다.")
+            throw ChatRoomLimitReachedException("더이상 참여할 수 없는 채팅방입니다.: $roomId")
         }
         if(openChatRoomUserService.exists(userId = requesterId, roomId = roomId)) {
             throw AlreadyExistsException("이미 참여중인 채팅방입니다.")

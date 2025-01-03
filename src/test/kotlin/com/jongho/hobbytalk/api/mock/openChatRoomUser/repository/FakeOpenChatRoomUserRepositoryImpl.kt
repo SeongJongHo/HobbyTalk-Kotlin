@@ -10,6 +10,10 @@ class FakeOpenChatRoomUserRepositoryImpl : OpenChatRoomUserRepository {
         roomUserList.add(openChatRoomUser)
     }
 
+    override fun findOneByUserIdAndRoomId(userId: Long, roomId: Long): OpenChatRoomUser? {
+        return roomUserList.firstOrNull{ it -> it.userId == userId && it.openChatRoomId == roomId }
+    }
+
     fun cleanUp() {
         roomUserList = mutableListOf()
     }
