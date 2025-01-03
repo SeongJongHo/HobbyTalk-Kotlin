@@ -32,4 +32,8 @@ class OpenChatRoomServiceImpl(private val openChatRoomRepository: OpenChatRoomRe
         openChatRoomRepository.save(openChatRoom = chatRoom.copy(notice = notice))
     }
 
+    override fun getOpenChatRoom(id: Long): OpenChatRoom? {
+        return openChatRoomRepository.findOneById(id = id)
+    }
+
 }
